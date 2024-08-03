@@ -1,4 +1,4 @@
-#!/bin/bash
+.#!/bin/bash
 
 rm -rf Problems
 mkdir Problems

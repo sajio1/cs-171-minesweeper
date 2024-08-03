@@ -1,0 +1,4 @@
+
+
+generate world
+C:\Users\Eric\AppData\Local\Programs\Python\Python311\python.exe WorldGenerator.py 5 world_5x5 5 5 1

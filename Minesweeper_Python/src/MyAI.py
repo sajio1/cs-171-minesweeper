@@ -23,14 +23,14 @@ class MyAI( AI ):
 		########################################################################
 		#							YOUR CODE BEGINS						   #
 		########################################################################
-		# Initialize the AI's knowledge base and other necessary attributes
+		# initialize the AI's knowledge space
 		self.rowDimension = rowDimension
 		self.colDimension = colDimension
 		self.totalMines = totalMines
 		self.startX = startX
 		self.startY = startY
 
-		# Keep track of uncovered cells and their corresponding numbers
+		# keep tracking uncover cells and their corresponding numbers
 		self.board = [[-1 for _ in range(colDimension)] for _ in range(rowDimension)]
 		self.board[startX][startY] = 0
 
@@ -67,14 +67,14 @@ class MyAI( AI ):
 				self.uncoverQueue.append((x, y))
 				return Action(AI.Action.UNCOVER, x, y)
 
-		# Flag the mine if we are sure of its location
+		# Flag the mine 
 		for i in range(self.rowDimension):
 			for j in range(self.colDimension):
 				if self.board[i][j] == -1 and self.totalMines == 1 and (i, j) not in self.flagged:
 					self.flagged.add((i, j))
 					return Action(AI.Action.FLAG, i, j)
 
-		# If no certain moves, make a random guess
+		# If no certain moves, random guess
 		for i in range(self.rowDimension):
 			for j in range(self.colDimension):
 				if self.board[i][j] == -1 and (i, j) not in self.flagged and (i, j) not in self.movesMade:
@@ -82,12 +82,12 @@ class MyAI( AI ):
 					return Action(AI.Action.UNCOVER, i, j)
 
 		return Action(AI.Action.LEAVE)
-		# Uncover the next cell in the queue
+		# uncover the next cell in the queue
 		if self.uncoverQueue:
 			x, y = self.uncoverQueue.pop(0)
 			return Action(AI.Action.UNCOVER, x, y)
 
-		# If no cells are left to uncover, leave the game
+		
 		return Action(AI.Action.LEAVE)
 		########################################################################
 		#							YOUR CODE ENDS							   #
